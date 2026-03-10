@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://ml-project-rx79.onrender.com",
 });
 
 export const predictDisease = async (data) => {
