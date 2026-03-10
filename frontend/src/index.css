@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #10b981; /* Precise Emerald */
+  --primary-glow: rgba(16, 185, 129, 0.2);
+  --accent: #6366f1; /* Deep Indigo */
+  --bg-dark: #020617; /* Deep Obsidian */
+  --card-bg: rgba(15, 23, 42, 0.8); /* Dark Glass */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #f43f5e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-animations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+    #020617;
+}
+
+/* Technical grid for dark mode */
+.bg-animations::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: move 30s infinite alternate ease-in-out;
+}
+
+.blob-1 { top: -200px; left: -100px; }
+.blob-2 { bottom: -200px; right: -100px; background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%); }
+
+@keyframes move {
+  from { transform: translate(0, 0) scale(1.0); }
+  to { transform: translate(100px, 80px) scale(1.1); }
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.9);
+  transform: translateY(-4px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.3);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 20px -4px rgba(16, 185, 129, 0.2);
+}
+
+.form-input {
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: white;
+  width: 100%;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(2, 6, 23, 0.8);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.prediction-success {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.prediction-danger {
+  background: rgba(244, 63, 94, 0.05);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  color: #f43f5e;
+}
+
+@media (max-width: 768px) {
+  .glass-card { border-radius: 16px; padding: 1.5rem; }
+}
